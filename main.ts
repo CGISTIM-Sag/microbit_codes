@@ -36,14 +36,26 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    I = randint(0, 9)
+    Shaking = 1
+    basic.showIcon(IconNames.Chessboard)
+    while (I == Rnd) {
+        Rnd = randint(0, 9)
+    }
+    I = Rnd
+    Shaking = 0
     JouerSon(I)
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
     JouerSon(I)
 })
+let Shaking = 0
+let Rnd = 0
 let I = 0
 I = 0
+Rnd = 0
+Shaking = 0
 basic.forever(function () {
-    basic.showNumber(I)
+    if (Shaking == 0) {
+        basic.showNumber(I)
+    }
 })
